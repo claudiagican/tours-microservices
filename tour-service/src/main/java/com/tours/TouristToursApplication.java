@@ -12,9 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 @SpringBootApplication
@@ -64,11 +69,15 @@ public class TouristToursApplication implements CommandLineRunner {
 	 * Helper class to import tours from a json file
 	 */
 	private static class TourFromFile {
+
 		private String packageType, title, description, price, length,
 				offer, difficulty, region;
 		static List<TourFromFile> read(String fileToImport) throws IOException {
+
+			File file = new File("tour-service/src/main/resources/" + fileToImport);
+
 			return new ObjectMapper().setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY).
-					readValue(new FileInputStream(fileToImport), new TypeReference<List<TourFromFile>>() {});
+					readValue(new FileInputStream(file.getAbsolutePath()), new TypeReference<List<TourFromFile>>() {});
 		}
 		protected TourFromFile(){}
 
