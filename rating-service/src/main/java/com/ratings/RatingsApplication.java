@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 @SpringBootApplication
-public class RatingsApplication implements CommandLineRunner {
+public class RatingsApplication {
 
 
 	public static void main(String[] args) {
