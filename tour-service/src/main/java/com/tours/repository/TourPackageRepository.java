@@ -8,13 +8,17 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.Optional;
 
+/**
+ * Rest Data repository for Tour Package
+ *
+ */
 @RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
 public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
 
     Optional<TourPackage> findByName(@Param("name") String name);
 
     @Override
-    @RestResource(exported = false)
+    @RestResource(exported = true)
     <S extends TourPackage> S save(S entity);
 
     @Override

@@ -11,18 +11,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
+/**
+ * The application class for Touristic Tours microservice.
+ * Demo data is loaded after spring boot started using run() method from CommandLineRunner.
+ * */
 @SpringBootApplication
+@EnableFeignClients
+@ImportAutoConfiguration({FeignAutoConfiguration.class})
 public class TouristToursApplication implements CommandLineRunner {
 
 	@Autowired
@@ -35,9 +40,11 @@ public class TouristToursApplication implements CommandLineRunner {
 		SpringApplication.run(TouristToursApplication.class, args);
 	}
 
+	/**
+	 * Import demo data for tour and tour packages. Runs after app is started, but before receives web requests.
+	 * */
 	@Override
 	public void run(String... args) throws Exception {
-		// run method runs after app starts but before receives web requests
 		createTourPackages();
 		importTours();
 

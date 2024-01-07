@@ -1,5 +1,8 @@
 package com.tours.domain;
 
+/**
+ * Tour possible regions
+ * */
 public enum Region {
     Nordic_Countries("Nordic Countries"), Eastern_Europe ("Eastern Europe"),
     Central_Europe("Central Europe"), Southern_Europe ("Southern Europe"),
@@ -18,6 +21,4 @@ public enum Region {
         }
         return null;
     }
-
-
 }

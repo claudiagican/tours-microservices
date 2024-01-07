@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+/**
+ *  Rating Controller
+ * */
 @RestController
 @RequestMapping("/ratings")
 public class RatingsController {

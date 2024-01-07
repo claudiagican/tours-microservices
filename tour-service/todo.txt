@@ -1,0 +1,5 @@
+Call the rating-service
+    /tour-service/tours/{id}/ratings
+
+that calls:
+    /rating-service/ratings/tours/tourId/{tourId}

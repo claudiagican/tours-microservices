@@ -1,20 +1,24 @@
 package com.tours.repository;
 
-import com.tours.domain.Region;
 import com.tours.domain.Tour;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Rest Data repository for Tour
+ *
+ */
 public interface TourRepository extends CrudRepository<Tour, Integer> {
+    @Override
+    @RestResource(exported = true)
+    List<Tour> findAll();
 
-    Page<Tour> findByTourPackageCode(@Param("code") String code, Pageable pageable);
-
-    List<Tour> findByPriceLessThan (Integer maxPrice);
+    @Override
+    @RestResource(exported = true)
+    Optional<Tour> findById(Integer id);
 
     @Override
     @RestResource(exported = false)

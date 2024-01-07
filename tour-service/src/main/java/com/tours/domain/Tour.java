@@ -2,6 +2,9 @@ package com.tours.domain;
 
 import jakarta.persistence.*;
 
+/**
+ * Touristic tour attributes
+ * */
 @Entity
 public class Tour {
 

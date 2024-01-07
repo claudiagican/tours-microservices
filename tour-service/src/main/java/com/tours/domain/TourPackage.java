@@ -4,6 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ * Tour packages: many tours can be assigned to a package
+ * */
 @Entity
 public class TourPackage {
 
@@ -27,5 +30,13 @@ public class TourPackage {
 
     public String getName() {
         return name;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
